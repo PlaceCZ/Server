@@ -4,7 +4,8 @@
   "description": "PlaceCZ Generál",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,7 @@
   },
   "homepage": "https://github.com/PlaceCZ/Server#readme",
   "dependencies": {
-    "express.js": "^1.0.0",
+    "express": "^4.17.3",
     "get-pixels": "^3.3.3",
     "multer": "^1.4.4",
     "ws": "^8.5.0"
