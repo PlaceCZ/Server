@@ -101,7 +101,7 @@ app.post('/updateorders', upload.single('image'), async (req, res) => {
     if (!req.body || !req.body?.password || req.body?.password !== process.env.PASSWORD)
         return lib.handleUpdateError(req, res, 'Incorrect password');
 
-    if (!req?.file || req.file?.mimetype !== 'image/png') 
+    if (!req?.file || req.file?.mimetype !== 'image/png')
         return lib.handleUpdateError(req, res, 'The file must be PNG!');
 
     getPixels(req.file.path, 'image/png', function (err, pixels) {
@@ -118,8 +118,8 @@ app.post('/updateorders', upload.single('image'), async (req, res) => {
             const a = pixels.data[(i * 4) + 3];
             if (a !== 255) continue;
 
-            const x = i % 1000, 
-                y = Math.floor(i / 2000), 
+            const x = i % 1000,
+                y = Math.floor(i / 2000),
                 r = pixels.data[i * 4],
                 g = pixels.data[(i * 4) + 1],
                 b = pixels.data[(i * 4) + 2];
@@ -127,7 +127,7 @@ app.post('/updateorders', upload.single('image'), async (req, res) => {
             const hex = lib.rgbToHex(r, g, b);
             const color = COLOR_MAPPINGS[hex];
 
-            if (!color) 
+            if (!color)
                 return lib.handleUpdateError(req, res, `A pixel on ${x}, ${y} has a wrong color.<br>R: ${r}, G: ${g}, B: ${b}, A: ${a}`);
 
             orders.push([x, y, color]);
